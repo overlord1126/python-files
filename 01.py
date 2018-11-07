@@ -112,7 +112,7 @@ for i in range(start,start+length) :
 # p( "1",menus )
 print( "爬取结束..." )
 
-db = pymysql.connect(host="localhost", user="root", password="123456", db="myele2", charset="utf8mb4")
+db = pymysql.connect(host="localhost", user="root", password="123456", db="ele", charset="utf8mb4")
 print( "连接数据库成功...." )
 cursor = db.cursor()  # 创建一个游标对象
 
