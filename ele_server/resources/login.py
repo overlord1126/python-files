@@ -1,7 +1,7 @@
 from flask_login import LoginManager,UserMixin,login_user
 
 from flask_restful import Resource
-from flask import request
+from flask import request,jsonify
 from model.UsersModel import UsersModel
 
 login_manager = LoginManager()
@@ -13,7 +13,7 @@ def load_user(userid):
 
 @login_manager.unauthorized_handler
 def unauthorized():
-    return "please login"
+    return "please login(请登录)"
 
 class Login (Resource):
 	def get (self):
@@ -24,7 +24,7 @@ class Login (Resource):
         }
 		if name is None or psw is None:
 			res["msg"] = "缺少 用户名 或者 密码"
-			return res
+			return jsonify(res)
 		else:
 			user = UsersModel.query.filter( UsersModel.name == name ).first()
 			if user is None:
@@ -33,6 +33,6 @@ class Login (Resource):
 				res["msg"] = "密码错误!!"
 			else: 
 				login_user( user )
-		return res
+		return jsonify(res)
 
 		

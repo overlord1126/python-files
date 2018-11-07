@@ -1,6 +1,6 @@
 from flask_restful import Resource,marshal_with,fields,abort
 from model.UsersModel import UsersModel
-from flask import request
+from flask import request,jsonify
 
 user_fields = {
 	'id': fields.Integer,

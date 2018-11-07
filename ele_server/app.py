@@ -15,7 +15,7 @@ app = Flask("app")
 api = Api( app )
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:123456@127.0.0.1:3306/myele'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:123456@127.0.0.1:3306/ele'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = "66666"
 
@@ -30,4 +30,5 @@ api.add_resource( Logout,"/logout" )
 api.add_resource( Register,"/register" )
 
 if __name__ == "__main__":
+	app.config['JSON_AS_ASCII'] = False
 	app.run( debug = True )

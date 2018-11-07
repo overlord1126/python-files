@@ -1,6 +1,6 @@
 from flask_restful import Resource,marshal_with,fields,abort
 from model.ShopsModel import ShopsModel
-from flask import request
+from flask import request,jsonify
 from flask_login import login_required
 
 shops_fields = {
@@ -30,4 +30,4 @@ class Shops(Resource):
                 shops = ShopsModel.query.filter( ShopsModel.name.ilike('%'+ keyword +'%') ).offset( offset ).limit( limit ).all()
         # shops = ShopsModel.query.paginate( 2,3,False ).items
         abort_if_none( shops )
-        return shops
+        return jsonify(shops)

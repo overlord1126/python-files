@@ -1,6 +1,6 @@
 from model.MenusModel import MenusModel
 from flask_restful import Resource,marshal_with,fields,abort
-from flask import request
+from flask import request,jsonify
 from flask_login import login_required
 
 menus_fields = {
@@ -30,14 +30,14 @@ class Menus ( Resource ):
 			abort( 404,message="restaurant_id is required" )
 		else :
 			menus = MenusModel.query.filter( MenusModel.restaurant_id == restaurant_id ).all()
-			return menus
+			return jsonify(menus)
 	@login_required
 	def post( self ):
 		restaurant_id = request.form.get("restaurant_id")
 		name = request.form.get("name")
 		if restaurant_id is None or\
 			name is None:
-			return {"msg":"缺少必要参数!"}
-		elif 
+			return jsonify({"msg":"缺少必要参数!"})
+		# elif 
 
 
