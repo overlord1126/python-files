@@ -121,10 +121,10 @@ cursor.execute("DROP TABLE IF EXISTS shop")  # 如果表存在则删除
 # 创建表sql语句
 createTab = """create table shop(
 		id int primary key auto_increment,
-		shop_id int,
+		shop_id varchar(50),
 		name varchar(100) not null,
 		shopLogo varchar(200) not null
-		);"""
+		) CHARSET=utf8;"""
 cursor.execute(createTab)  # 执行创建数据表操作
 print( "创建 商家表成功...." )
 
@@ -146,9 +146,9 @@ cursor.execute("DROP TABLE IF EXISTS menus")  # 如果表存在则删除
 # 创建表sql语句
 createTab = """create table menus(
 		id int primary key auto_increment,
-		item_id BIGINT,
+		item_id varchar(50),
 		name varchar(100) not null,
-		restaurant_id int, 
+		restaurant_id varchar(50), 
 		photos varchar(2000),
 		rating float,
 		satisfy_rate float,
@@ -158,7 +158,7 @@ createTab = """create table menus(
 		price float,
 		sold_out tinyint,
 		month_sales int
-		);"""
+		) CHARSET=utf8;"""
 cursor.execute(createTab)  # 执行创建数据表操作
 print( "创建 菜品表 成功...." )
 sql = "INSERT INTO `menus`(`item_id`,`name`,`restaurant_id`,`photos`,`rating`,`satisfy_rate`,`rating_count`,`satisfy_count`,`original_price`,`price`,`sold_out`,`month_sales`) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
